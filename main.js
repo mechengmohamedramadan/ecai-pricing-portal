@@ -1,6 +1,6 @@
 // ---------- CONFIG (ضع هنا معلومات Supabase لاحقًا) --------------
-const SUPABASE_URL = "REPLACE_WITH_SUPABASE_URL";
-const SUPABASE_KEY = "REPLACE_WITH_SUPABASE_ANON_KEY";
+const SUPABASE_URL = "https://sbumajqfpwxqkclybizh.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNidW1hanFmcHd4cWtjbHliaXpoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjMwMzQ3NjYsImV4cCI6MjA3ODYxMDc2Nn0.55YXPYxzkSAYMBLSIl7nV5U5BjvhKFi_9CYfrtaHGrA";
 // -------------------------------------------------------------------
 
 const searchInput = document.getElementById('searchInput');
