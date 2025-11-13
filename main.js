@@ -154,3 +154,7 @@ function buildQuotationHtml(client){
   <table border="1" cellpadding="6" cellspacing="0"><thead><tr><th>Item</th><th>Qty</th><th>Unit Price</th><th>Discount</th><th>Tax</th><th>Total</th></tr></thead><tbody>${rows}</tbody></table></body></html>`;
   return html;
 }
+function calcGateTorque(forceN, distanceM){
+  // torque (Nm) = force (N) * distance (m)
+  return Number(forceN) * Number(distanceM);
+}
