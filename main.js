@@ -158,3 +158,25 @@ function calcGateTorque(forceN, distanceM){
   // torque (Nm) = force (N) * distance (m)
   return Number(forceN) * Number(distanceM);
 }
+async function fetchArrayBuffer(url){
+  const res = await fetch(url);
+  if(!res.ok) throw new Error('Failed to fetch template: ' + res.status);
+  return await res.arrayBuffer();
+}
+
+async function generateDocxFromTemplate(data){
+  // data = { client_name, project_name, date, prepared_by, items: [...], calc: {...}, notes: '...' }
+  const tplUrl = '/templates/template_report.docx'; // path inside your project
+  const tplBuf = await fetchArrayBuffer(tplUrl);
+  const zip = new PizZip(tplBuf);
+  const doc = new window.docxtemplater(zip, { paragraphLoop: true, linebreaks: true });
+  doc.setData(data);
+  try {
+    doc.render();
+  } catch(e){
+    console.error('Template render error', e);
+    throw e;
+  }
+  const out = doc.getZip().generate({ type: 'blob', mimeType: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+  saveAs(out, `${data.client_name || 'report'}_report.docx`);
+}
